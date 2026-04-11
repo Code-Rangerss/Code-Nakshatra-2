@@ -361,7 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Name Layer
                 const nameText = nameInput.value.trim();
                 if (nameText) {
-                    ctx.font = 'bold 85px "Inter", "Segoe UI", sans-serif';
+                    const fontSize = Math.max(85, Math.round((180 / 1852) * canvas.width));
+                    ctx.font = `bold ${fontSize}px "Inter", "Segoe UI", sans-serif`;
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
@@ -369,9 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.shadowOffsetX = 4;
                     ctx.shadowOffsetY = 4;
                     ctx.fillStyle = '#ffffff';
-                    ctx.fillText(nameText, canvas.width / 2, canvas.height - 180);
+                    const bottomMargin = Math.round((180 / 2304) * canvas.height);
+                    ctx.fillText(nameText, canvas.width / 2, canvas.height - bottomMargin);
                     ctx.shadowColor = 'transparent';
-                }
             }
             renderCanvas(); // Initial render
             // Observers
