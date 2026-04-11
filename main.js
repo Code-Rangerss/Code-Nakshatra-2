@@ -373,6 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const bottomMargin = Math.round((180 / 2304) * canvas.height);
                     ctx.fillText(nameText, canvas.width / 2, canvas.height - bottomMargin);
                     ctx.shadowColor = 'transparent';
+                }
             }
             renderCanvas(); // Initial render
             // Observers
