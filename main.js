@@ -195,7 +195,115 @@
     
 
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const canvas = document.getElementById('swag-canvas');
+        //     if (!canvas) return;
+        //     const ctx = canvas.getContext('2d');
+        //     const nameInput = document.getElementById('swag-name');
+        //     const uploadInput = document.getElementById('swag-upload');
+        //     const downloadBtn = document.getElementById('swag-download');
+        //     let frameImage = new Image();
+        //     frameImage.crossOrigin = "anonymous";
+        //     frameImage.src = "https://ik.imagekit.io/logicsync/WhatsApp%20Image%202026-03-16%20at%209.48.39%20PM.jpeg";
+        //     let userImage = new Image();
+        //     function renderCanvas() {
+        //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+                // Background Color
+                // ctx.fillStyle = '#0a0a0c';
+                // ctx.fillRect(0, 0, canvas.width, canvas.height);
+                // Draw Frame First (Because it is an opaque JPEG)
+                // if (frameImage.complete && frameImage.src) {
+                //     ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
+                // } else if (!frameImage.src) {
+                    // Placeholder when no frame is provided
+                //     const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                //     gradient.addColorStop(0, '#a855f7'); // purple-500
+                //     gradient.addColorStop(1, '#06b6d4'); // cyan-500
+                //     ctx.strokeStyle = gradient;
+                //     ctx.lineWidth = 15;
+                //     ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+                //     ctx.font = 'bold 36px sans-serif';
+                //     ctx.fillStyle = gradient;
+                //     ctx.textAlign = 'center';
+                //     ctx.fillText('Paste Frame Link In The Card To Preview', canvas.width / 2, 80);
+                // }
+                // Then Draw User Photo exactly inside the black placeholder
+                // Placeholder relative coords based on 967x1202 source: 
+                // Left=197, Top=274, Width=583, Height=568
+                // if (userImage.src && frameImage.complete) {
+                //     const boxX = (197 / 967) * canvas.width;
+                //     const boxY = (274 / 1202) * canvas.height;
+                //     const boxW = (583 / 967) * canvas.width;
+                //     const boxH = (568 / 1202) * canvas.height;
+                //     const hRatio = boxW / userImage.width;
+                //     const vRatio = boxH / userImage.height;
+                //     const ratio = Math.max(hRatio, vRatio);
+                //     const renderW = userImage.width * ratio;
+                //     const renderH = userImage.height * ratio;
+                //     const renderX = boxX + (boxW - renderW) / 2;
+                //     const renderY = boxY + (boxH - renderH) / 2;
+                //     ctx.save();
+                //     ctx.beginPath();
+                //     ctx.rect(boxX, boxY, boxW, boxH);
+                //     ctx.clip(); // Ensure image doesn't bleed out of placeholder
+                //     ctx.drawImage(userImage, 0, 0, userImage.width, userImage.height,
+                //         renderX, renderY, renderW, renderH);
+                //     ctx.restore();
+                // }
+                // Name Layer
+            //     const nameText = nameInput.value.trim();
+            //     if (nameText) {
+            //         ctx.font = 'bold 85px "Inter", "Segoe UI", sans-serif';
+            //         ctx.textAlign = 'center';
+            //         ctx.textBaseline = 'middle';
+            //         ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+            //         ctx.shadowBlur = 20;
+            //         ctx.shadowOffsetX = 4;
+            //         ctx.shadowOffsetY = 4;
+            //         ctx.fillStyle = '#ffffff';
+            //         ctx.fillText(nameText, canvas.width / 2, canvas.height - 180);
+            //         ctx.shadowColor = 'transparent';
+            //     }
+            // }
+            // renderCanvas(); // Initial render
+            // Observers
+        //     frameImage.onload = () => {
+        //         if (frameImage.width && frameImage.height) {
+        //             canvas.width = frameImage.width;
+        //             canvas.height = frameImage.height;
+        //         }
+        //         renderCanvas();
+        //     };
+        //     frameImage.onerror = () => renderCanvas();
+        //     nameInput.addEventListener('input', () => renderCanvas());
+        //     uploadInput.addEventListener('change', (e) => {
+        //         const file = e.target.files[0];
+        //         if (file) {
+        //             const reader = new FileReader();
+        //             reader.onload = function (event) {
+        //                 userImage.onload = () => renderCanvas();
+        //                 userImage.src = event.target.result;
+        //             }
+        //             reader.readAsDataURL(file);
+        //         }
+        //     });
+        //     downloadBtn.addEventListener('click', () => {
+        //         try {
+        //             const dataUrl = canvas.toDataURL('image/png', 1.0);
+        //             const link = document.createElement('a');
+        //             link.download = `CODE_Nakshatra_${nameInput.value.trim() || 'Hero'}.png`;
+        //             link.href = dataUrl;
+        //             document.body.appendChild(link);
+        //             link.click();
+        //             document.body.removeChild(link);
+        //         } catch (err) {
+        //             alert('Could not download image. It might be due to CORS policy on the frame image URL. Trying to open in a new tab...');
+        //             console.error(err);
+        //         }
+        //     });
+        // });
+
+document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('swag-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
@@ -204,7 +312,7 @@
             const downloadBtn = document.getElementById('swag-download');
             let frameImage = new Image();
             frameImage.crossOrigin = "anonymous";
-            frameImage.src = "https://ik.imagekit.io/logicsync/WhatsApp%20Image%202026-03-16%20at%209.48.39%20PM.jpeg";
+            frameImage.src = "https://ik.imagekit.io/uwcufjbtj/IMG_20260411_193123.png";
             let userImage = new Image();
             function renderCanvas() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -228,13 +336,13 @@
                     ctx.fillText('Paste Frame Link In The Card To Preview', canvas.width / 2, 80);
                 }
                 // Then Draw User Photo exactly inside the black placeholder
-                // Placeholder relative coords based on 967x1202 source: 
-                // Left=197, Top=274, Width=583, Height=568
+                // Placeholder relative coords based on 1852x2304 source: 
+                // Left=394, Top=668, Width=1079, Height=1153
                 if (userImage.src && frameImage.complete) {
-                    const boxX = (197 / 967) * canvas.width;
-                    const boxY = (274 / 1202) * canvas.height;
-                    const boxW = (583 / 967) * canvas.width;
-                    const boxH = (568 / 1202) * canvas.height;
+                    const boxX = (394 / 1852) * canvas.width;
+                    const boxY = (668 / 2304) * canvas.height;
+                    const boxW = (1079 / 1852) * canvas.width;
+                    const boxH = (1153 / 2304) * canvas.height;
                     const hRatio = boxW / userImage.width;
                     const vRatio = boxH / userImage.height;
                     const ratio = Math.max(hRatio, vRatio);
